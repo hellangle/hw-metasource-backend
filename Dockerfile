@@ -23,8 +23,8 @@ CMD ["npm", "run", "dev"]
 # Production build stage
 FROM common-build-stage as production-build-stage
 
-RUN npm install -g pm2
+# RUN npm install -g pm2
 
 ENV NODE_ENV production
 
-CMD ["npm", "run", "deploy:prod"]
+CMD ["npm", "run", "start"]

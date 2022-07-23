@@ -31,7 +31,11 @@ const sequelize = new Sequelize.Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
   benchmark: true,
 });
 
-sequelize.authenticate();
+try {
+  sequelize.authenticate();
+} catch (error) {
+  logger.error(error);
+}
 
 const DB = {
   Users: UserModel(sequelize),
