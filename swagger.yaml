@@ -1,0 +1,81 @@
+tags:
+- name: users
+  description: users API
+- name: auth
+  description: auth API
+
+paths:
+  /signup:
+    post:
+      tags:
+      - auth
+      summary: Sign up new user
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            type: object
+            required:
+              - name
+              - email
+            properties:
+              name:
+                type: string
+              email:
+                type: string
+      responses:
+        201:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+# [GET] users
+  /users:
+    get:
+      tags:
+      - users
+      summary: Find All Users
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# [GET] users/id
+  /users/{id}:
+    get:
+      tags:
+      - users
+      summary: Find User By Id
+      parameters:
+      - name: id
+        in: path
+        description: User Id
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 'OK'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  users:
+    type: object
+    required:
+        - email
+        - name
+    properties:
+      email:
+        type: string
+        description: user Email
+      name:
+        type: string
+        description: name of user
+
+schemes:
+ - https
+ - http
