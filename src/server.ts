@@ -4,9 +4,12 @@ import UsersRoute from '@routes/users.route';
 import validateEnv from '@utils/validateEnv';
 
 validateEnv();
+try {
+  const usersRoute = new UsersRoute();
+  const authRoute = new AuthRoute();
+  const app = new App([usersRoute, authRoute]);
 
-const usersRoute = new UsersRoute();
-const authRoute = new AuthRoute();
-const app = new App([usersRoute, authRoute]);
-
-app.listen();
+  app.listen();
+} catch (error) {
+  console.log(error);
+}
