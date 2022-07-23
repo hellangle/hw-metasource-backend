@@ -15,13 +15,11 @@ jobs:
 
     steps:
       - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
+        uses: JimCronqvist/action-ssh@master
         with:
-          host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          port: 22
-          script: |
+          hosts: 'ubuntu@ec2-54-251-192-199.ap-southeast-1.compute.amazonaws.com'
+          privateKey: ${{ secrets.EC2_SSH_KEY }}
+          command: |
             cd ~/projects/hw-metasource-backend
             git checkout deploy.sh
             chmod +x deploy.sh
