@@ -24,10 +24,15 @@ class App {
     this.port = PORT || 3000;
 
     this.connectToDatabase();
+    logger.info(`======= database: connected =======`);
     this.initializeMiddlewares();
+    logger.info(`======= middlewares: installed =======`);
     this.initializeRoutes(routes);
+    logger.info(`======= routes: installed =======`);
     this.initializeSwagger();
+    logger.info(`======= swagger: installed =======`);
     this.initializeErrorHandling();
+    logger.info(`======= error handling: installed =======`);
   }
 
   public listen() {
